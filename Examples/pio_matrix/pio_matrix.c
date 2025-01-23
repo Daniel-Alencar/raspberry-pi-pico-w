@@ -34,6 +34,7 @@ double desenho2[25] =   {1.0, 0.0, 0.0, 0.0, 1.0,
                         0.0, 1.0, 0.0, 1.0, 0.0,
                         1.0, 0.0, 0.0, 0.0, 1.0};
 
+
 //imprimir valor binário
 void imprimir_binario(int num) {
  int i;
@@ -62,7 +63,8 @@ uint32_t matrix_rgb(double b, double r, double g)
 
 //rotina para acionar a matrix de leds - ws2812b
 void desenho_pio(
-    double *desenho, uint32_t valor_led, PIO pio, uint sm
+    double *desenho, uint32_t valor_led, PIO pio, uint sm,
+    double r, double g, double b
 ){
     for (int16_t i = 0; i < NUM_PIXELS; i++) {
         if (i%2==0) {
@@ -81,9 +83,9 @@ int main()
 {
     PIO pio = pio0; 
     bool ok;
-    uint16_t i;
+    
     uint32_t valor_led;
-    // double r = 0.0, b = 0.0 , g = 0.0;
+    double r = 0.0, b = 0.0 , g = 0.0;
 
     //coloca a frequência de clock para 128 MHz, facilitando a divisão pelo clock
     ok = set_sys_clock_khz(128000, false);
@@ -111,15 +113,15 @@ int main()
 
     //interrupção da gpio habilitada
     gpio_set_irq_enabled_with_callback(
-        button_0, GPIO_IRQ_EDGE_FALL, 1, & gpio_irq_handler
+        button_0, GPIO_IRQ_EDGE_FALL, 1, &gpio_irq_handler
     );
 
     while (true) {
     
         if(gpio_get(button_1)) {
-            desenho_pio(desenho, valor_led, pio, sm);
+            desenho_pio(desenho, valor_led, pio, sm, r, g, b);
         } else {
-            desenho_pio(desenho2, valor_led, pio, sm);
+            desenho_pio(desenho2, valor_led, pio, sm, r, g, b);
         }
         sleep_ms(500);
         printf("\nfrequeência de clock %ld\r\n", clock_get_hz(clk_sys));
