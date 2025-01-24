@@ -8,7 +8,7 @@
 #include "pico/bootrom.h"
 
 //other libraries
-#include "led_matrix.h"
+#include "led_matrix/led_matrix.h"
 
 //botão de interupção
 const uint button_0 = 5;
@@ -18,8 +18,8 @@ double drawning_red_1[NUM_LEDS] = {
     0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0, 
     0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0, 0.0, 0.0
+    0.0, 0.2, 0.0, 0.0, 0.0,
+    0.2, 0.2, 0.2, 0.0, 0.0
 };
 
 double drawning_green_1[NUM_LEDS] = {
@@ -34,8 +34,8 @@ double drawning_blue_1[NUM_LEDS] = {
     0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0, 
     0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0, 0.0, 0.0
+    0.0, 0.2, 0.0, 0.0, 0.0,
+    0.2, 0.2, 0.2, 0.0, 0.0
 };
 
 double drawning_red_2[NUM_LEDS] = {

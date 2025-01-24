@@ -1,5 +1,0 @@
-.program blink_pio
-.wrap_target
-    set pins, 1   ; Drive pin high, delay for 32000 cycles
-    set pins, 0   ; Drive pin low, delay for 32000 cycles
-.wrap
